@@ -36,21 +36,106 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
     <style>
-      /* .row-teacher {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
+      /* Phần sideBar */
+      /* top gs */
+      .widget {
+        margin: 20px 0;
       }
 
-      .col-md-6-teacher,
-      .col-lg-4-teacher,
-      .col-xl-3-teacher {
+      .widget-title {
+        font-weight: bold;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      .tutor-list {
         display: flex;
+        flex-direction: column;
+        gap: 10px; /* Khoảng cách giữa các gia sư */
+      }
+
+      .tutor-item {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px dotted #ddd; /* Đường chấm dưới mỗi item */
+        padding: 10px 0;
+      }
+
+      .tutor-avatar {
+        width: 30px; /* Kích thước ảnh đại diện nhỏ */
+        height: 30px;
+        border-radius: 50%; /* Bo tròn ảnh đại diện */
+        object-fit: cover;
+        margin-right: 10px; /* Khoảng cách giữa ảnh và tên */
+      }
+
+      .tutor-name {
+        flex-grow: 1;
+        font-size: 14px;
+        color: #333;
+      }
+
+      .tutor-score {
+        background-color: #e2e6ea;
+        color: #333;
+        border-radius: 50%;
+        padding: 5px 10px;
+        font-size: 12px;
+        display: inline-flex;
         justify-content: center;
-      } */
+        align-items: center;
+        margin-right: 10px;
+      }
+      /* top gs */
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .subject-tag {
+        padding: 5px 10px;
+        border: 1px solid #ddd; /* Bo viền */
+        border-radius: 35px; /* Bo góc */
+        background-color: #f8f9fa; /* Màu nền */
+        font-size: 14px;
+        color: #333;
+        text-align: center;
+        transition: background-color 0.3s ease;
+      }
+
+      .subject-tag:hover {
+        background-color: #e2e6ea; /* Hiệu ứng khi hover */
+      }
+
+      /* Phần sideBar */
+      .textOverflow1Line {
+        white-space: nowrap; /* Không cho phép xuống dòng */
+        overflow: hidden; /* Ẩn phần văn bản vượt quá */
+        text-overflow: ellipsis; /* Thêm dấu "..." ở cuối */
+        margin-bottom: 2px;
+      }
+
+      .textOverflowManyLines {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden; /* Ẩn phần văn bản vượt quá */
+        text-overflow: ellipsis; /* Thêm dấu "..." ở cuối */
+      }
       .teacher-item {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         /* width: 100%; */
+        width: 300px; /* Chiều rộng cố định */
+        height: 450px; /* Chiều cao cố định */
+        border: 1px solid #ddd; /* Viền bao quanh */
+        border-radius: 10px; /* Bo góc */
+        overflow: hidden; /* Ẩn nội dung tràn */
+        background-color: #f8f9fa; /* Màu nền */
+        display: flex;
+        flex-direction: column;
+        /* justify-content: space-between; */
       }
 
       .teacher-item:hover {
@@ -274,312 +359,699 @@
     <!-- Page Header End -->
 
     <!-- Team start -->
-    <div class="container-fluid team py-5">
-      <div class="container py-5">
-        <div
-          class="mx-auto text-center wow fadeIn"
-          data-wow-delay="0.1s"
-          style="max-width: 600px"
-        >
-          <h4
-            class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius"
-          >
-            Đội ngũ giảng viên của chúng tôi
-          </h4>
-          <h1 class="mb-5 display-4">Gặp gỡ các giảng viên</h1>
+    <div
+      class="mx-auto text-center wow fadeIn mt-2"
+      data-wow-delay="0.1s"
+      style="max-width: 600px"
+    >
+      <h4
+        class="text-primary mb-4 border-bottom border-primary border-2 d-inline-block p-2 title-border-radius"
+      >
+        Đội ngũ giảng viên của chúng tôi
+      </h4>
+      <h1 class="mb-5 display-4">Gặp gỡ các giảng viên</h1>
+    </div>
+
+    <div class="col-md-12 mb-5">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="container-fluid team pt-0">
+            <div class="container pt-0">
+              <div class="row g-5 justify-content-center">
+                <div
+                  class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
+                  data-wow-delay="0.1s"
+                >
+                  <div
+                    id="teacher_55452"
+                    class="teacher-item shadow-sm position-relative rounded bg-dark"
+                  >
+                    <div class="doctor-thumb position-relative overflow-hidden">
+                      <img
+                        src="img/testimonial-1.jpg"
+                        class="img-fluid w-100"
+                        alt="Linda Carlson"
+                      />
+                      <div
+                        class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
+                        style="background: rgba(0, 0, 0, 0.5); display: none"
+                      >
+                        <p class="text-white mb-3">
+                          Nhà tôi ba đời bị trĩ, trĩ nội, trĩ ngoại...
+                        </p>
+                        <div class="buttonCtrl">
+                          <button
+                            class="btn btn-success btn-check btn-sm me-2"
+                            ng-click="selectTeacher(55452,1)"
+                          >
+                            Chọn
+                          </button>
+                          <button
+                            class="btn btn-danger btn-uncheck btn-sm me-2"
+                            ng-click="selectTeacher(55452,0)"
+                          >
+                            Bỏ chọn
+                          </button>
+                          <a
+                            class="btn btn-outline-light btn-create-class btn-sm"
+                            ng-href="/tim-gia-su"
+                            href="/tim-gia-su"
+                            >Tạo yêu cầu</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="checkedteacher position-absolute top-0 end-0 p-2"
+                      >
+                        <i class="fas fa-user-check text-white fs-5"></i>
+                      </div>
+                    </div>
+                    <div class="info p-3 bg-dark rounded-bottom">
+                      <h4 class="text-white mt-0 mb-2 text-center">
+                        <a
+                          href="/thong-tin-gia-su/linda-carlson-55452"
+                          class="titleTeacher text-white text-decoration-none"
+                          >Linda Carlson</a
+                        >
+                      </h4>
+                      <ul class="list-unstyled mb-0 text-light small">
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-map-marker-alt me-2"></i>Nhà gần hàng
+                          xóm, Nhà gần hàng xóm, Nhà gần hàng xóm, Nhà gần hàng
+                          xómNhà gần hàng xóm
+                        </li>
+                        <li class="textOverflow1Line">
+                          <i class="fas fa-user-graduate me-2"></i>Giáo viên
+                          tiếng Em, Giáo viên tiếng EmGiáo viên tiếng EmGiáo
+                          viên tiếng Em
+                        </li>
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-book me-2"></i>Siêu cấp tiếng anh vip
+                          pro, Siêu cấp tiếng anh vip pro, Siêu cấp tiếng anh
+                          vip pro, Siêu cấp tiếng anh vip pro
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
+                  data-wow-delay="0.1s"
+                >
+                  <div
+                    id="teacher_55452"
+                    class="teacher-item shadow-sm position-relative rounded bg-dark"
+                  >
+                    <div class="doctor-thumb position-relative overflow-hidden">
+                      <img
+                        src="img/testimonial-1.jpg"
+                        class="img-fluid w-100"
+                        alt="Linda Carlson"
+                      />
+                      <div
+                        class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
+                        style="background: rgba(0, 0, 0, 0.5); display: none"
+                      >
+                        <p class="text-white mb-3">
+                          Nhà tôi ba đời bị trĩ, trĩ nội, trĩ ngoại...
+                        </p>
+                        <div class="buttonCtrl">
+                          <button
+                            class="btn btn-success btn-check btn-sm me-2"
+                            ng-click="selectTeacher(55452,1)"
+                          >
+                            Chọn
+                          </button>
+                          <button
+                            class="btn btn-danger btn-uncheck btn-sm me-2"
+                            ng-click="selectTeacher(55452,0)"
+                          >
+                            Bỏ chọn
+                          </button>
+                          <a
+                            class="btn btn-outline-light btn-create-class btn-sm"
+                            ng-href="/tim-gia-su"
+                            href="/tim-gia-su"
+                            >Tạo yêu cầu</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="checkedteacher position-absolute top-0 end-0 p-2"
+                      >
+                        <i class="fas fa-user-check text-white fs-5"></i>
+                      </div>
+                    </div>
+                    <div class="info p-3 bg-dark rounded-bottom">
+                      <h4 class="text-white mt-0 mb-2 text-center">
+                        <a
+                          href="/thong-tin-gia-su/linda-carlson-55452"
+                          class="titleTeacher text-white text-decoration-none"
+                          >Linda Carlson</a
+                        >
+                      </h4>
+                      <ul class="list-unstyled mb-0 text-light small">
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-map-marker-alt me-2"></i>Nhà gần hàng
+                          xóm, Nhà gần hàng xóm, Nhà gần hàng xóm, Nhà gần hàng
+                          xómNhà gần hàng xóm
+                        </li>
+                        <li class="textOverflow1Line">
+                          <i class="fas fa-user-graduate me-2"></i>Giáo viên
+                          tiếng Em, Giáo viên tiếng EmGiáo viên tiếng EmGiáo
+                          viên tiếng Em
+                        </li>
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-book me-2"></i>Siêu cấp tiếng anh vip
+                          pro, Siêu cấp tiếng anh vip pro, Siêu cấp tiếng anh
+                          vip pro, Siêu cấp tiếng anh vip pro
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
+                  data-wow-delay="0.1s"
+                >
+                  <div
+                    id="teacher_55452"
+                    class="teacher-item shadow-sm position-relative rounded bg-dark"
+                  >
+                    <div class="doctor-thumb position-relative overflow-hidden">
+                      <img
+                        src="img/testimonial-1.jpg"
+                        class="img-fluid w-100"
+                        alt="Linda Carlson"
+                      />
+                      <div
+                        class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
+                        style="background: rgba(0, 0, 0, 0.5); display: none"
+                      >
+                        <p class="text-white mb-3">
+                          Nhà tôi ba đời bị trĩ, trĩ nội, trĩ ngoại...
+                        </p>
+                        <div class="buttonCtrl">
+                          <button
+                            class="btn btn-success btn-check btn-sm me-2"
+                            ng-click="selectTeacher(55452,1)"
+                          >
+                            Chọn
+                          </button>
+                          <button
+                            class="btn btn-danger btn-uncheck btn-sm me-2"
+                            ng-click="selectTeacher(55452,0)"
+                          >
+                            Bỏ chọn
+                          </button>
+                          <a
+                            class="btn btn-outline-light btn-create-class btn-sm"
+                            ng-href="/tim-gia-su"
+                            href="/tim-gia-su"
+                            >Tạo yêu cầu</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="checkedteacher position-absolute top-0 end-0 p-2"
+                      >
+                        <i class="fas fa-user-check text-white fs-5"></i>
+                      </div>
+                    </div>
+                    <div class="info p-3 bg-dark rounded-bottom">
+                      <h4 class="text-white mt-0 mb-2 text-center">
+                        <a
+                          href="/thong-tin-gia-su/linda-carlson-55452"
+                          class="titleTeacher text-white text-decoration-none"
+                          >Linda Carlson</a
+                        >
+                      </h4>
+                      <ul class="list-unstyled mb-0 text-light small">
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-map-marker-alt me-2"></i>Nhà gần hàng
+                          xóm, Nhà gần hàng xóm, Nhà gần hàng xóm, Nhà gần hàng
+                          xómNhà gần hàng xóm
+                        </li>
+                        <li class="textOverflow1Line">
+                          <i class="fas fa-user-graduate me-2"></i>Giáo viên
+                          tiếng Em, Giáo viên tiếng EmGiáo viên tiếng EmGiáo
+                          viên tiếng Em
+                        </li>
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-book me-2"></i>Siêu cấp tiếng anh vip
+                          pro, Siêu cấp tiếng anh vip pro, Siêu cấp tiếng anh
+                          vip pro, Siêu cấp tiếng anh vip pro
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
+                  data-wow-delay="0.1s"
+                >
+                  <div
+                    id="teacher_55452"
+                    class="teacher-item shadow-sm position-relative rounded bg-dark"
+                  >
+                    <div class="doctor-thumb position-relative overflow-hidden">
+                      <img
+                        src="img/testimonial-1.jpg"
+                        class="img-fluid w-100"
+                        alt="Linda Carlson"
+                      />
+                      <div
+                        class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
+                        style="background: rgba(0, 0, 0, 0.5); display: none"
+                      >
+                        <p class="text-white mb-3">
+                          Nhà tôi ba đời bị trĩ, trĩ nội, trĩ ngoại...
+                        </p>
+                        <div class="buttonCtrl">
+                          <button
+                            class="btn btn-success btn-check btn-sm me-2"
+                            ng-click="selectTeacher(55452,1)"
+                          >
+                            Chọn
+                          </button>
+                          <button
+                            class="btn btn-danger btn-uncheck btn-sm me-2"
+                            ng-click="selectTeacher(55452,0)"
+                          >
+                            Bỏ chọn
+                          </button>
+                          <a
+                            class="btn btn-outline-light btn-create-class btn-sm"
+                            ng-href="/tim-gia-su"
+                            href="/tim-gia-su"
+                            >Tạo yêu cầu</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="checkedteacher position-absolute top-0 end-0 p-2"
+                      >
+                        <i class="fas fa-user-check text-white fs-5"></i>
+                      </div>
+                    </div>
+                    <div class="info p-3 bg-dark rounded-bottom">
+                      <h4 class="text-white mt-0 mb-2 text-center">
+                        <a
+                          href="/thong-tin-gia-su/linda-carlson-55452"
+                          class="titleTeacher text-white text-decoration-none"
+                          >Linda Carlson</a
+                        >
+                      </h4>
+                      <ul class="list-unstyled mb-0 text-light small">
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-map-marker-alt me-2"></i>Nhà gần hàng
+                          xóm, Nhà gần hàng xóm, Nhà gần hàng xóm, Nhà gần hàng
+                          xómNhà gần hàng xóm
+                        </li>
+                        <li class="textOverflow1Line">
+                          <i class="fas fa-user-graduate me-2"></i>Giáo viên
+                          tiếng Em, Giáo viên tiếng EmGiáo viên tiếng EmGiáo
+                          viên tiếng Em
+                        </li>
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-book me-2"></i>Siêu cấp tiếng anh vip
+                          pro, Siêu cấp tiếng anh vip pro, Siêu cấp tiếng anh
+                          vip pro, Siêu cấp tiếng anh vip pro
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
+                  data-wow-delay="0.1s"
+                >
+                  <div
+                    id="teacher_55452"
+                    class="teacher-item shadow-sm position-relative rounded bg-dark"
+                  >
+                    <div class="doctor-thumb position-relative overflow-hidden">
+                      <img
+                        src="img/testimonial-1.jpg"
+                        class="img-fluid w-100"
+                        alt="Linda Carlson"
+                      />
+                      <div
+                        class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
+                        style="background: rgba(0, 0, 0, 0.5); display: none"
+                      >
+                        <p class="text-white mb-3">
+                          Nhà tôi ba đời bị trĩ, trĩ nội, trĩ ngoại...
+                        </p>
+                        <div class="buttonCtrl">
+                          <button
+                            class="btn btn-success btn-check btn-sm me-2"
+                            ng-click="selectTeacher(55452,1)"
+                          >
+                            Chọn
+                          </button>
+                          <button
+                            class="btn btn-danger btn-uncheck btn-sm me-2"
+                            ng-click="selectTeacher(55452,0)"
+                          >
+                            Bỏ chọn
+                          </button>
+                          <a
+                            class="btn btn-outline-light btn-create-class btn-sm"
+                            ng-href="/tim-gia-su"
+                            href="/tim-gia-su"
+                            >Tạo yêu cầu</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="checkedteacher position-absolute top-0 end-0 p-2"
+                      >
+                        <i class="fas fa-user-check text-white fs-5"></i>
+                      </div>
+                    </div>
+                    <div class="info p-3 bg-dark rounded-bottom">
+                      <h4 class="text-white mt-0 mb-2 text-center">
+                        <a
+                          href="/thong-tin-gia-su/linda-carlson-55452"
+                          class="titleTeacher text-white text-decoration-none"
+                          >Linda Carlson</a
+                        >
+                      </h4>
+                      <ul class="list-unstyled mb-0 text-light small">
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-map-marker-alt me-2"></i>Nhà gần hàng
+                          xóm, Nhà gần hàng xóm, Nhà gần hàng xóm, Nhà gần hàng
+                          xómNhà gần hàng xóm
+                        </li>
+                        <li class="textOverflow1Line">
+                          <i class="fas fa-user-graduate me-2"></i>Giáo viên
+                          tiếng Em, Giáo viên tiếng EmGiáo viên tiếng EmGiáo
+                          viên tiếng Em
+                        </li>
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-book me-2"></i>Siêu cấp tiếng anh vip
+                          pro, Siêu cấp tiếng anh vip pro, Siêu cấp tiếng anh
+                          vip pro, Siêu cấp tiếng anh vip pro
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
+                  data-wow-delay="0.1s"
+                >
+                  <div
+                    id="teacher_55452"
+                    class="teacher-item shadow-sm position-relative rounded bg-dark"
+                  >
+                    <div class="doctor-thumb position-relative overflow-hidden">
+                      <img
+                        src="img/testimonial-1.jpg"
+                        class="img-fluid w-100"
+                        alt="Linda Carlson"
+                      />
+                      <div
+                        class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
+                        style="background: rgba(0, 0, 0, 0.5); display: none"
+                      >
+                        <p class="text-white mb-3">
+                          Nhà tôi ba đời bị trĩ, trĩ nội, trĩ ngoại...
+                        </p>
+                        <div class="buttonCtrl">
+                          <button
+                            class="btn btn-success btn-check btn-sm me-2"
+                            ng-click="selectTeacher(55452,1)"
+                          >
+                            Chọn
+                          </button>
+                          <button
+                            class="btn btn-danger btn-uncheck btn-sm me-2"
+                            ng-click="selectTeacher(55452,0)"
+                          >
+                            Bỏ chọn
+                          </button>
+                          <a
+                            class="btn btn-outline-light btn-create-class btn-sm"
+                            ng-href="/tim-gia-su"
+                            href="/tim-gia-su"
+                            >Tạo yêu cầu</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="checkedteacher position-absolute top-0 end-0 p-2"
+                      >
+                        <i class="fas fa-user-check text-white fs-5"></i>
+                      </div>
+                    </div>
+                    <div class="info p-3 bg-dark rounded-bottom">
+                      <h4 class="text-white mt-0 mb-2 text-center">
+                        <a
+                          href="/thong-tin-gia-su/linda-carlson-55452"
+                          class="titleTeacher text-white text-decoration-none"
+                          >Linda Carlson</a
+                        >
+                      </h4>
+                      <ul class="list-unstyled mb-0 text-light small">
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-map-marker-alt me-2"></i>Nhà gần hàng
+                          xóm, Nhà gần hàng xóm, Nhà gần hàng xóm, Nhà gần hàng
+                          xómNhà gần hàng xóm
+                        </li>
+                        <li class="textOverflow1Line">
+                          <i class="fas fa-user-graduate me-2"></i>Giáo viên
+                          tiếng Em, Giáo viên tiếng EmGiáo viên tiếng EmGiáo
+                          viên tiếng Em
+                        </li>
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-book me-2"></i>Siêu cấp tiếng anh vip
+                          pro, Siêu cấp tiếng anh vip pro, Siêu cấp tiếng anh
+                          vip pro, Siêu cấp tiếng anh vip pro
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
+                  data-wow-delay="0.1s"
+                >
+                  <div
+                    id="teacher_55452"
+                    class="teacher-item shadow-sm position-relative rounded bg-dark"
+                  >
+                    <div class="doctor-thumb position-relative overflow-hidden">
+                      <img
+                        src="img/testimonial-1.jpg"
+                        class="img-fluid w-100"
+                        alt="Linda Carlson"
+                      />
+                      <div
+                        class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
+                        style="background: rgba(0, 0, 0, 0.5); display: none"
+                      >
+                        <p class="text-white mb-3">
+                          Nhà tôi ba đời bị trĩ, trĩ nội, trĩ ngoại...
+                        </p>
+                        <div class="buttonCtrl">
+                          <button
+                            class="btn btn-success btn-check btn-sm me-2"
+                            ng-click="selectTeacher(55452,1)"
+                          >
+                            Chọn
+                          </button>
+                          <button
+                            class="btn btn-danger btn-uncheck btn-sm me-2"
+                            ng-click="selectTeacher(55452,0)"
+                          >
+                            Bỏ chọn
+                          </button>
+                          <a
+                            class="btn btn-outline-light btn-create-class btn-sm"
+                            ng-href="/tim-gia-su"
+                            href="/tim-gia-su"
+                            >Tạo yêu cầu</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="checkedteacher position-absolute top-0 end-0 p-2"
+                      >
+                        <i class="fas fa-user-check text-white fs-5"></i>
+                      </div>
+                    </div>
+                    <div class="info p-3 bg-dark rounded-bottom">
+                      <h4 class="text-white mt-0 mb-2 text-center">
+                        <a
+                          href="/thong-tin-gia-su/linda-carlson-55452"
+                          class="titleTeacher text-white text-decoration-none"
+                          >Linda Carlson</a
+                        >
+                      </h4>
+                      <ul class="list-unstyled mb-0 text-light small">
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-map-marker-alt me-2"></i>Nhà gần hàng
+                          xóm, Nhà gần hàng xóm, Nhà gần hàng xóm, Nhà gần hàng
+                          xómNhà gần hàng xóm
+                        </li>
+                        <li class="textOverflow1Line">
+                          <i class="fas fa-user-graduate me-2"></i>Giáo viên
+                          tiếng Em, Giáo viên tiếng EmGiáo viên tiếng EmGiáo
+                          viên tiếng Em
+                        </li>
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-book me-2"></i>Siêu cấp tiếng anh vip
+                          pro, Siêu cấp tiếng anh vip pro, Siêu cấp tiếng anh
+                          vip pro, Siêu cấp tiếng anh vip pro
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
+                  data-wow-delay="0.1s"
+                >
+                  <div
+                    id="teacher_55452"
+                    class="teacher-item shadow-sm position-relative rounded bg-dark"
+                  >
+                    <div class="doctor-thumb position-relative overflow-hidden">
+                      <img
+                        src="img/testimonial-1.jpg"
+                        class="img-fluid w-100"
+                        alt="Linda Carlson"
+                      />
+                      <div
+                        class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
+                        style="background: rgba(0, 0, 0, 0.5); display: none"
+                      >
+                        <p class="text-white mb-3">
+                          Nhà tôi ba đời bị trĩ, trĩ nội, trĩ ngoại...
+                        </p>
+                        <div class="buttonCtrl">
+                          <button
+                            class="btn btn-success btn-check btn-sm me-2"
+                            ng-click="selectTeacher(55452,1)"
+                          >
+                            Chọn
+                          </button>
+                          <button
+                            class="btn btn-danger btn-uncheck btn-sm me-2"
+                            ng-click="selectTeacher(55452,0)"
+                          >
+                            Bỏ chọn
+                          </button>
+                          <a
+                            class="btn btn-outline-light btn-create-class btn-sm"
+                            ng-href="/tim-gia-su"
+                            href="/tim-gia-su"
+                            >Tạo yêu cầu</a
+                          >
+                        </div>
+                      </div>
+                      <div
+                        class="checkedteacher position-absolute top-0 end-0 p-2"
+                      >
+                        <i class="fas fa-user-check text-white fs-5"></i>
+                      </div>
+                    </div>
+                    <div class="info p-3 bg-dark rounded-bottom">
+                      <h4 class="text-white mt-0 mb-2 text-center">
+                        <a
+                          href="/thong-tin-gia-su/linda-carlson-55452"
+                          class="titleTeacher text-white text-decoration-none"
+                          >Linda Carlson</a
+                        >
+                      </h4>
+                      <ul class="list-unstyled mb-0 text-light small">
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-map-marker-alt me-2"></i>Nhà gần hàng
+                          xóm, Nhà gần hàng xóm, Nhà gần hàng xóm, Nhà gần hàng
+                          xómNhà gần hàng xó
+                        </li>
+                        <li class="textOverflow1Line">
+                          <i class="fas fa-user-graduate me-2"></i>Giáo viên
+                          tiếng Em, Giáo viên tiếng EmGiáo viên tiếng EmGiáo
+                          viên tiếng Em
+                        </li>
+                        <li class="textOverflowManyLines">
+                          <i class="fas fa-book me-2"></i>Siêu cấp tiếng anh vip
+                          pro, Siêu cấp tiếng anh vip pro, Siêu cấp tiếng anh
+                          vip pro, Siêu cấp tiếng anh vip pro
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Repeat for each teacher card with similar HTML structure and adjusted wow delay as in original -->
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- <div class="row-teacher g-5 justify-content-center"> -->
-        <div class="row g-5 justify-content-center">
-          <!-- <div
-            class="col-md-6-teacher col-lg-4-teacher col-xl-3-teacher wow fadeIn"
-            data-wow-delay="0.1s"
-          > -->
-          <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
-            data-wow-delay="0.1s"
-          >
-            <div
-              id="teacher_55452"
-              class="teacher-item shadow-sm position-relative rounded"
-            >
-              <div class="doctor-thumb position-relative overflow-hidden">
+        <div class="col-md-3">
+          <div class="widget">
+            <h5 class="widget-title line-bottom">Top gia sư Tháng 11</h5>
+            <div class="tutor-list">
+              <div class="tutor-item">
                 <img
-                  src="img/team-1.jpg"
-                  class="img-fluid w-100"
-                  alt="Linda Carlson"
+                  src="https://i.pinimg.com/736x/27/59/85/2759857f7584e595195bd9079dbe61b8.jpg"
+                  class="tutor-avatar"
                 />
-                <div
-                  class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
-                  style="background: rgba(0, 0, 0, 0.5); display: none"
-                >
-                  <p class="text-white mb-3">
-                    Nhà tôi ba đời bị trĩ, trĩ nội, trĩ ngoại...
-                  </p>
-                  <div class="buttonCtrl">
-                    <button
-                      class="btn btn-success btn-check btn-sm me-2"
-                      ng-click="selectTeacher(55452,1)"
-                    >
-                      Chọn
-                    </button>
-                    <button
-                      class="btn btn-danger btn-uncheck btn-sm me-2"
-                      ng-click="selectTeacher(55452,0)"
-                    >
-                      Bỏ chọn
-                    </button>
-                    <a
-                      class="btn btn-outline-light btn-create-class btn-sm"
-                      ng-href="/tim-gia-su"
-                      href="/tim-gia-su"
-                      >Tạo yêu cầu</a
-                    >
-                  </div>
-                </div>
-                <div class="checkedteacher position-absolute top-0 end-0 p-2">
-                  <i class="fas fa-user-check text-white fs-5"></i>
-                </div>
+                <span class="tutor-name">Trần Nguyễn Khánh Lâm</span>
+                <span class="tutor-score">2</span>
               </div>
-              <div class="info text-center p-3 bg-dark rounded-bottom">
-                <h4 class="text-white mt-0 mb-2">
-                  <a
-                    href="/thong-tin-gia-su/linda-carlson-55452"
-                    class="titleTeacher text-white text-decoration-none"
-                    >Linda Carlson</a
-                  >
-                </h4>
-                <ul class="list-unstyled mb-0 text-light small">
-                  <li>
-                    <i class="fas fa-map-marker-alt me-2"></i>Nhà gần hàng xóm
-                  </li>
-                  <li>
-                    <i class="fas fa-user-graduate me-2"></i>Giáo viên tiếng Em
-                  </li>
-                  <li>
-                    <i class="fas fa-book me-2"></i>Siêu cấp tiếng anh vip pro
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
-            data-wow-delay="0.1s"
-          >
-            <div
-              id="teacher_55452"
-              class="teacher-item shadow-sm position-relative rounded"
-            >
-              <div class="doctor-thumb position-relative overflow-hidden">
+              <div class="tutor-item">
                 <img
-                  src="img/team-1.jpg"
-                  class="img-fluid w-100"
-                  alt="Linda Carlson"
+                  src="https://i.pinimg.com/736x/ee/8f/bd/ee8fbd1d731637de6904438a1fcb3798.jpg"
+                  class="tutor-avatar"
                 />
-                <div
-                  class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
-                  style="background: rgba(0, 0, 0, 0.5); display: none"
-                >
-                  <p class="text-white mb-3">
-                    Bản thân tôi đã tốt nghiệp Đại học với chuyên ngành Tiếng
-                    Anh. Tôi có 10 năm kinh nghiệm giảng dạy tại các trường quốc
-                    tế...
-                  </p>
-                  <div class="buttonCtrl">
-                    <button
-                      class="btn btn-success btn-check btn-sm me-2"
-                      ng-click="selectTeacher(55452,1)"
-                    >
-                      Chọn
-                    </button>
-                    <button
-                      class="btn btn-danger btn-uncheck btn-sm me-2"
-                      ng-click="selectTeacher(55452,0)"
-                    >
-                      Bỏ chọn
-                    </button>
-                    <a
-                      class="btn btn-outline-light btn-create-class btn-sm"
-                      ng-href="/tim-gia-su"
-                      href="/tim-gia-su"
-                      >Tạo yêu cầu</a
-                    >
-                  </div>
-                </div>
-                <div class="checkedteacher position-absolute top-0 end-0 p-2">
-                  <i class="fas fa-user-check text-white fs-5"></i>
-                </div>
+                <span class="tutor-name">Nguyễn Đức Minh</span>
+                <span class="tutor-score">2</span>
               </div>
-              <div class="info text-center p-3 bg-dark rounded-bottom">
-                <h4 class="text-white mt-0 mb-2">
-                  <a
-                    href="/thong-tin-gia-su/linda-carlson-55452"
-                    class="titleTeacher text-white text-decoration-none"
-                    >Linda Carlson</a
-                  >
-                </h4>
-                <ul class="list-unstyled mb-0 text-light small">
-                  <li>
-                    <i class="fas fa-map-marker-alt me-2"></i>New York,
-                    Manhattan, Brooklyn
-                  </li>
-                  <li>
-                    <i class="fas fa-user-graduate me-2"></i>English Teacher
-                  </li>
-                  <li>
-                    <i class="fas fa-book me-2"></i>English Literature, Grammar,
-                    SAT Prep
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
-            data-wow-delay="0.1s"
-          >
-            <div
-              id="teacher_55452"
-              class="teacher-item shadow-sm position-relative rounded"
-            >
-              <div class="doctor-thumb position-relative overflow-hidden">
+              <div class="tutor-item">
                 <img
-                  src="img/team-1.jpg"
-                  class="img-fluid w-100"
-                  alt="Linda Carlson"
+                  src="https://i.pinimg.com/736x/66/17/dd/6617dd06a096ceeb1bb0b676c9f98427.jpg"
+                  class="tutor-avatar"
                 />
-                <div
-                  class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
-                  style="background: rgba(0, 0, 0, 0.5); display: none"
-                >
-                  <p class="text-white mb-3">
-                    Bản thân tôi đã tốt nghiệp Đại học với chuyên ngành Tiếng
-                    Anh. Tôi có 10 năm kinh nghiệm giảng dạy tại các trường quốc
-                    tế...
-                  </p>
-                  <div class="buttonCtrl">
-                    <button
-                      class="btn btn-success btn-check btn-sm me-2"
-                      ng-click="selectTeacher(55452,1)"
-                    >
-                      Chọn
-                    </button>
-                    <button
-                      class="btn btn-danger btn-uncheck btn-sm me-2"
-                      ng-click="selectTeacher(55452,0)"
-                    >
-                      Bỏ chọn
-                    </button>
-                    <a
-                      class="btn btn-outline-light btn-create-class btn-sm"
-                      ng-href="/tim-gia-su"
-                      href="/tim-gia-su"
-                      >Tạo yêu cầu</a
-                    >
-                  </div>
-                </div>
-                <div class="checkedteacher position-absolute top-0 end-0 p-2">
-                  <i class="fas fa-user-check text-white fs-5"></i>
-                </div>
+                <span class="tutor-name">Nguyễn Trung Luân</span>
+                <span class="tutor-score">2</span>
               </div>
-              <div class="info text-center p-3 bg-dark rounded-bottom">
-                <h4 class="text-white mt-0 mb-2">
-                  <a
-                    href="/thong-tin-gia-su/linda-carlson-55452"
-                    class="titleTeacher text-white text-decoration-none"
-                    >Linda Carlson</a
-                  >
-                </h4>
-                <ul class="list-unstyled mb-0 text-light small">
-                  <li>
-                    <i class="fas fa-map-marker-alt me-2"></i>New York,
-                    Manhattan, Brooklyn
-                  </li>
-                  <li>
-                    <i class="fas fa-user-graduate me-2"></i>English Teacher
-                  </li>
-                  <li>
-                    <i class="fas fa-book me-2"></i>English Literature, Grammar,
-                    SAT Prep
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div
-            class="col-md-6 col-lg-4 col-xl-3 wow fadeIn"
-            data-wow-delay="0.1s"
-          >
-            <div
-              id="teacher_55452"
-              class="teacher-item shadow-sm position-relative rounded"
-            >
-              <div class="doctor-thumb position-relative overflow-hidden">
+              <div class="tutor-item">
                 <img
-                  src="img/team-1.jpg"
-                  class="img-fluid w-100"
-                  alt="Linda Carlson"
+                  src="https://i.pinimg.com/236x/6a/65/0a/6a650a727b258752c02a8df6222ac52c.jpg"
+                  class="tutor-avatar"
                 />
-                <div
-                  class="descInfo position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-end p-3"
-                  style="background: rgba(0, 0, 0, 0.5); display: none"
-                >
-                  <p class="text-white mb-3">
-                    Bản thân tôi đã tốt nghiệp Đại học với chuyên ngành Tiếng
-                    Anh. Tôi có 10 năm kinh nghiệm giảng dạy tại các trường quốc
-                    tế...
-                  </p>
-                  <div class="buttonCtrl">
-                    <button
-                      class="btn btn-success btn-check btn-sm me-2"
-                      ng-click="selectTeacher(55452,1)"
-                    >
-                      Chọn
-                    </button>
-                    <button
-                      class="btn btn-danger btn-uncheck btn-sm me-2"
-                      ng-click="selectTeacher(55452,0)"
-                    >
-                      Bỏ chọn
-                    </button>
-                    <a
-                      class="btn btn-outline-light btn-create-class btn-sm"
-                      ng-href="/tim-gia-su"
-                      href="/tim-gia-su"
-                      >Tạo yêu cầu</a
-                    >
-                  </div>
-                </div>
-                <div class="checkedteacher position-absolute top-0 end-0 p-2">
-                  <i class="fas fa-user-check text-white fs-5"></i>
-                </div>
+                <span class="tutor-name">Nguyễn Trung Hiếu</span>
+                <span class="tutor-score">2</span>
               </div>
-              <div class="info text-center p-3 bg-dark rounded-bottom">
-                <h4 class="text-white mt-0 mb-2">
-                  <a
-                    href="/thong-tin-gia-su/linda-carlson-55452"
-                    class="titleTeacher text-white text-decoration-none"
-                    >Linda Carlson</a
-                  >
-                </h4>
-                <ul class="list-unstyled mb-0 text-light small">
-                  <li>
-                    <i class="fas fa-map-marker-alt me-2"></i>New York,
-                    Manhattan, Brooklyn
-                  </li>
-                  <li>
-                    <i class="fas fa-user-graduate me-2"></i>English Teacher
-                  </li>
-                  <li>
-                    <i class="fas fa-book me-2"></i>English Literature, Grammar,
-                    SAT Prep
-                  </li>
-                </ul>
+              <div class="tutor-item">
+                <img
+                  src="https://i.pinimg.com/236x/19/c6/ab/19c6aba9a6d235d695100f43385b0824.jpg"
+                  class="tutor-avatar"
+                />
+                <span class="tutor-name">Phạm Đức Tùng</span>
+                <span class="tutor-score">2</span>
               </div>
+              <!-- Thêm các mục tutor-item tương tự -->
             </div>
           </div>
 
-          <!-- Repeat for each teacher card with similar HTML structure and adjusted wow delay as in original -->
+          <div class="widget">
+            <h5 class="widget-title line-bottom">Top các môn dạy</h5>
+            <div class="tags">
+              <span class="subject-tag">Toán Lớp 2</span>
+              <span class="subject-tag">Toán Lớp 3</span>
+              <span class="subject-tag">Toán Lớp 1</span>
+              <span class="subject-tag">Toán Lớp 4</span>
+              <span class="subject-tag">Tiếng Việt Lớp 1</span>
+              <span class="subject-tag">Tiếng Anh Lớp 2</span>
+              <!-- Thêm các môn học khác theo nhu cầu -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
